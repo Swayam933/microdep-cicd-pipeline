@@ -1,0 +1,19 @@
+services:
+  inventory-service:
+    build:
+      context: ./services/inventory-service
+    image: microdep-inventory-service:local
+    ports:
+      - "8081:8080"
+
+  orders-service:
+    build:
+      context: ./services/orders-service
+    image: microdep-orders-service:local
+    environment:
+      INVENTORY_URL: http://inventory-service:8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      inventory-service:
+        condition: service_healthy

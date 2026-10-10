@@ -1,0 +1,22 @@
+# Requires the kube-prometheus-stack Helm chart already installed
+# (installs Prometheus + Grafana + the ServiceMonitor CRD).
+#   helm install monitoring prometheus-community/kube-prometheus-stack -n monitoring --create-namespace
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: microdep-services
+  namespace: monitoring
+  labels:
+    release: monitoring # must match the Helm release label Prometheus watches
+spec:
+  namespaceSelector:
+    matchNames: [microdep]
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values: [orders-service, inventory-service]
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s
