@@ -833,5 +833,3 @@ extensions; they are not prerequisites for completing the local demo.
 ## License
 
 This project is licensed under the MIT License; see [LICENSE](./LICENSE).
-Before publishing, replace `MicroDep contributors` in the copyright notice
-with the name of the copyright holder if that is the attribution you intend.
