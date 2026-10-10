@@ -1,5 +1,7 @@
 # MicroDep: Microservices CI/CD Demo
 
+[![Python CI](https://github.com/Swayam933/microdep-cicd-pipeline/actions/workflows/python-ci.yml/badge.svg?branch=main)](https://github.com/Swayam933/microdep-cicd-pipeline/actions/workflows/python-ci.yml)
+
 MicroDep is a learning project that demonstrates two small HTTP services,
 container images, Kubernetes deployments, an ingress route, CI/CD with Jenkins,
 AWS infrastructure with Terraform, and optional metrics and log collection.
@@ -165,6 +167,7 @@ process's stock. It does **not** coordinate separate pods or survive restarts.
 | `services/inventory-service/.dockerignore` | Keeps tests, caches and local environments out of the inventory image build context. |
 | `services/inventory-service/tests/` | Inventory API tests, including concurrent reservation coverage. |
 | `requirements.txt` | Root-level development/test dependencies for repository checks; includes both services' dependencies and pytest. |
+| `.github/workflows/python-ci.yml` | GitHub Actions matrix that installs root requirements and runs both service test suites on Python 3.12 and 3.13. |
 | `docker-compose.yml` | Local two-container development setup. |
 | `scripts/local-test.sh` | Bash smoke test for WSL/Linux/macOS with Docker Compose v2. |
 | `scripts/local-test.ps1` | PowerShell smoke test for Windows with Docker Compose v2. |
