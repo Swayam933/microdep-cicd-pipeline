@@ -164,6 +164,7 @@ process's stock. It does **not** coordinate separate pods or survive restarts.
 | `services/inventory-service/Dockerfile` | Builds the non-root Python/Gunicorn inventory image. |
 | `services/inventory-service/.dockerignore` | Keeps tests, caches and local environments out of the inventory image build context. |
 | `services/inventory-service/tests/` | Inventory API tests, including concurrent reservation coverage. |
+| `requirements.txt` | Root-level development/test dependencies for repository checks; includes both services' dependencies and pytest. |
 | `docker-compose.yml` | Local two-container development setup. |
 | `scripts/local-test.sh` | Bash smoke test for WSL/Linux/macOS with Docker Compose v2. |
 | `scripts/local-test.ps1` | PowerShell smoke test for Windows with Docker Compose v2. |
@@ -345,8 +346,7 @@ From the project root in WSL:
 ```bash
 python3 -m venv .venv-wsl
 source .venv-wsl/bin/activate
-python -m pip install -r services/orders-service/requirements.txt \
-  -r services/inventory-service/requirements.txt pytest
+python -m pip install -r requirements.txt
 
 (cd services/orders-service && python -m pytest -q)
 (cd services/inventory-service && python -m pytest -q)
